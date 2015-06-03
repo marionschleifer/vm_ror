@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  positions: 1
+  current_position: 1
+
+two:
+  name: MyString
+  positions: 1
+  current_position: 1

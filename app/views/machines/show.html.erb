@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @machine.name %>
+</p>
+
+<p>
+  <strong>Positions:</strong>
+  <%= @machine.positions %>
+</p>
+
+<p>
+  <strong>Current position:</strong>
+  <%= @machine.current_position %>
+</p>
+
+<table>
+  <% @machine.turn_tables.each do |turn_table| %>
+    <tr>
+      <td><%= turn_table.id %></td>
+    </tr>
+  <% end %>
+</table>
+
+
+<p>
+  <%= link_to 'Create turntable', turn_tables_path(turn_table: {machine_id: @machine.id}), :method => :post %>
+</p>
+
+<%= link_to 'Edit', edit_machine_path(@machine) %> |
+<%= link_to 'Back', machines_path %>

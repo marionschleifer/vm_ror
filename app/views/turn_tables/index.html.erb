@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Turn Tables</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Open</th>
+      <th>Machine</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @turn_tables.each do |turn_table| %>
+      <tr>
+        <td><%= turn_table.open %></td>
+        <td><%= turn_table.machine_id %></td>
+        <td><%= link_to 'Show', turn_table %></td>
+        <td><%= link_to 'Edit', edit_turn_table_path(turn_table) %></td>
+        <td><%= link_to 'Destroy', turn_table, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Turn table', new_turn_table_path %>
