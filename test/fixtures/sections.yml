@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  empty: false
+  turn_table_id: 1
+
+two:
+  empty: false
+  turn_table_id: 1

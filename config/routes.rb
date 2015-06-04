@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  resources :sections
   resources :turn_tables
-  resources :machines
+  resources :machines do
+    put 'turn', on: :member
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

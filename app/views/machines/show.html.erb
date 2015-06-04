@@ -19,14 +19,24 @@
   <% @machine.turn_tables.each do |turn_table| %>
     <tr>
       <td><%= turn_table.id %></td>
+      <% turn_table.sections.each_with_index do |section, index| %>
+        <% if index + 1 == @machine.current_position %>
+          <td style='background-color: lightblue'><%= section.id %></td>
+        <% else %>
+          <td><%= section.id %></td>
+        <% end %>
+      <% end %>
     </tr>
   <% end %>
 </table>
 
-
 <p>
   <%= link_to 'Create turntable', turn_tables_path(turn_table: {machine_id: @machine.id}), :method => :post %>
 </p>
+
+<div>
+  <%= link_to "Turn", turn_machine_path(@machine), :method => :put %>
+</div>
 
 <%= link_to 'Edit', edit_machine_path(@machine) %> |
 <%= link_to 'Back', machines_path %>

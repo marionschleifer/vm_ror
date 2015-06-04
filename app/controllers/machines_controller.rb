@@ -1,5 +1,5 @@
 class MachinesController < ApplicationController
-  before_action :set_machine, only: [:show, :edit, :update, :destroy]
+  before_action :set_machine
 
   # GET /machines
   # GET /machines.json
@@ -59,6 +59,16 @@ class MachinesController < ApplicationController
       format.html { redirect_to machines_url, notice: 'Machine was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def turn
+    if @machine.current_position < @machine.positions
+      @machine.current_position += 1
+    else
+      @machine.current_position = 1
+    end
+    @machine.save
+    redirect_to machine_path
   end
 
   private

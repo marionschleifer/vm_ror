@@ -28,6 +28,9 @@ class TurnTablesController < ApplicationController
     @turn_table = TurnTable.new(turn_table_params)
     respond_to do |format|
       if @turn_table.save
+        @machine.positions.times do
+          @turn_table.sections.create
+        end
         format.html { redirect_to @machine, notice: 'Turn table was successfully created.' }
         format.json { render :show, status: :created, location: @turn_table }
       else
