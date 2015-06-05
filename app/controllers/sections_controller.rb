@@ -61,6 +61,10 @@ class SectionsController < ApplicationController
     end
   end
 
+  def empty?
+    [true, false].sample
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_section
