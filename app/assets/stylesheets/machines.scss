@@ -1,3 +1,34 @@
 // Place all the styles related to the machines controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+a {
+  text-decoration: none;
+}
+
+.title {
+  font-size: 30px;
+}
+
+.machine-table {
+  border: 3px solid brown;
+  padding: 10px;
+}
+
+.section-table {
+  border: 1px solid brown;
+  padding: 10px;
+}
+
+.price {
+  border: 2px solid brown;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.turn {
+  background-color: lightblue;
+  padding: 10px;
+  border: 2px solid brown;
+  font-weight: bold;
+}
