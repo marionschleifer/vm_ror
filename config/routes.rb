@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :articles
   resources :sections
   resources :turn_tables
   resources :machines do

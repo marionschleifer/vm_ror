@@ -71,4 +71,5 @@ class SectionsController < ApplicationController
     def section_params
       params.require(:section).permit(:empty, :turn_table_id)
     end
+
 end
