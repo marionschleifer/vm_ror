@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150609104052) do
+ActiveRecord::Schema.define(version: 20150610090253) do
 
   create_table "articles", force: :cascade do |t|
-    t.string   "name"
-    t.integer  "price"
-    t.date     "expiry_date"
+    t.string   "name",        null: false
+    t.integer  "price",       null: false
+    t.date     "expiry_date", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "section_id",  null: false
   end
 
   create_table "machines", force: :cascade do |t|

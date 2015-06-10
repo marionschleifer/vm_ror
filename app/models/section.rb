@@ -3,7 +3,7 @@ class Section < ActiveRecord::Base
   has_one :article
 
   def empty?
-    [true, false].sample
+    article.blank?
   end
 
 end

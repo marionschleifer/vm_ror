@@ -10,10 +10,11 @@
       <% @machine.turn_tables.each do |turn_table| %>
         <tr>
           <% turn_table.sections.each_with_index do |section, index| %>
-            <% if index + 1 == @machine.current_position %>
-              <td class="section-table", style='background-color: lightblue'><%= "Ice Cream" %></td>
+            <% css_class = 'active' if @machine.current_position == index + 1 %>
+            <% if section.empty? %>
+              <td class="section-table <%= css_class %>"><%= link_to '+', new_article_path(section_id: section.id) %></td>
             <% else %>
-              <td class="section-table"><%= "Ice Cream" %></td>
+              <td class="section-table <%= css_class %>"><%= section.article.name %></td>
             <% end %>
           <% end %>
           <td class="price"> $ Price $ </td>

@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  resources :turn_tables do
+    resources :sections
+  end
+
   resources :articles
-  resources :sections
-  resources :turn_tables
+
   resources :machines do
     put 'turn', on: :member
   end
