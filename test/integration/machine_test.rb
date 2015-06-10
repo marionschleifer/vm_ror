@@ -7,7 +7,7 @@ class AuthenticationTest < ActionDispatch::IntegrationTest
   end
 
   test "show machine page" do
-    visit machine_url(@machine)
+    visit machine_path(@machine)
     assert page.has_content?(@machine.name)
     assert page.has_content?("TURN")
   end
