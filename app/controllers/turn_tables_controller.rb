@@ -74,4 +74,5 @@ class TurnTablesController < ApplicationController
     def turn_table_params
       params.require(:turn_table).permit(:open, :machine_id)
     end
+
 end

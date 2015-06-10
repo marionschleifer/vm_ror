@@ -1,9 +1,28 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  empty: false
-  turn_table_id: 1
+one1:
+  turn_table: one
 
-two:
-  empty: false
-  turn_table_id: 1
+one2:
+  turn_table: one
+
+one3:
+  turn_table: one
+
+two1:
+  turn_table: two
+
+two2:
+  turn_table: two
+
+two3:
+  turn_table: two
+
+three1:
+  turn_table: three
+
+three2:
+  turn_table: three
+
+three3:
+  turn_table: three

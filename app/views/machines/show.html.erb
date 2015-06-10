@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p class='title'>
-  <%= 'Best Ice Cream in Town'  %>
+  <%= @machine.name  %>
 </p>
 
 <table class="machine-table">
@@ -17,7 +17,13 @@
               <td class="section-table <%= css_class %>"><%= section.article.name %></td>
             <% end %>
           <% end %>
-          <td class="price"> $ Price $ </td>
+          <td class="price">
+            <% if turn_table.sections[(@machine.current_position-1)].empty? %>
+              n/a
+            <% else %>
+              <%= number_with_precision(turn_table.sections[(@machine.current_position-1)].article.price/100.0, precision: 2) %>
+            <% end %>
+          </td>
         </tr>
       <% end %>
       </table>

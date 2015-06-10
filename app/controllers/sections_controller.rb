@@ -72,8 +72,4 @@ class SectionsController < ApplicationController
       params.require(:section).permit(:empty, :turn_table_id)
     end
 
-    def add_article
-      @section.article.create
-    end
-
 end

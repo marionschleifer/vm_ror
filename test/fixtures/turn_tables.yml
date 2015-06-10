@@ -2,8 +2,12 @@
 
 one:
   open: false
-  machine_id: 1
+  machine: icecream_machine
 
 two:
   open: false
-  machine_id: 1
+  machine: icecream_machine
+
+three:
+  open: false
+  machine: icecream_machine

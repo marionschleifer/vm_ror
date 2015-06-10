@@ -1,11 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  price: 1
-  expiry_date: 2015-06-09
+solero:
+  name: Solero
+  price: 350
+  expiry_date: <%= 12.weeks.from_now.to_s(:db) %>
+  section: one1
 
-two:
-  name: MyString
-  price: 1
-  expiry_date: 2015-06-09
+magnum:
+  name: Magnum
+  price: 380
+  expiry_date: <%= 5.weeks.from_now.to_s(:db) %>
+  section: two2
+
+expired_twister:
+  name: Twister
+  price: 90
+  expiry_date: <%= 1.week.ago.to_s(:db) %>
+  section: three3

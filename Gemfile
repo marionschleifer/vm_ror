@@ -43,3 +43,9 @@ group :development, :test do
   gem 'spring'
 end
 
+group :test do
+  gem 'capybara', '~> 1.1'
+  gem 'selenium-webdriver'
+end
+
+

@@ -62,13 +62,8 @@ class MachinesController < ApplicationController
   end
 
   def turn
-    if @machine.current_position < @machine.positions
-      @machine.current_position += 1
-    else
-      @machine.current_position = 1
-    end
-    @machine.save
-    redirect_to machine_path
+    @machine.turn!
+    redirect_to @machine
   end
 
   private
