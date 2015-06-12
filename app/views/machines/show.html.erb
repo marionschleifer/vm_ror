@@ -24,6 +24,14 @@
               <%= number_with_precision(turn_table.sections[(@machine.current_position-1)].article.price/100.0, precision: 2) %>
             <% end %>
           </td>
+          <% if turn_table.sections[(@machine.current_position-1)].empty? %>
+            <td class="section-table">
+          <% elsif turn_table.sections[(@machine.current_position-1)].article.expired? %>
+            <td class="expired">
+          <% else %>
+              <td class="fine">
+          <% end %>
+          </td>
         </tr>
       <% end %>
       </table>
