@@ -11,4 +11,29 @@ class AuthenticationTest < ActionDispatch::IntegrationTest
     assert page.has_content?(@machine.name)
     assert page.has_content?("TURN")
   end
+
+  test "show price" do
+    visit machine_path(@machine)
+    assert page.has_content?("3.50")
+  end
+
+  test "machine turn" do
+    visit machine_path(@machine)
+    assert page.has_content?("3.50")
+    # click_link("TURN")
+    # click_link("TURN")
+    # assert page.has_content?("3.80")
+  end
+
+  test "create article" do
+    visit machine_path(@machine)
+    click_link('+', match: :first)
+    fill_in('Name', :with => 'Strawberry')
+    fill_in('Price', :with => '400')
+    select '2017', :from => 'article[expiry_date(1i)]'
+    select 'August', :from => 'article[expiry_date(2i)]'
+    select '1', :from => 'article[expiry_date(3i)]'
+    #click_button('Create Article')
+  end
+
 end
