@@ -1,6 +1,4 @@
 class MachinesController < ApplicationController
-  before_action :set_machine
-
   # GET /machines
   # GET /machines.json
   def index
@@ -10,6 +8,7 @@ class MachinesController < ApplicationController
   # GET /machines/1
   # GET /machines/1.json
   def show
+    @machine = Machine.find(params[:id])
   end
 
   # GET /machines/new
@@ -19,6 +18,7 @@ class MachinesController < ApplicationController
 
   # GET /machines/1/edit
   def edit
+    @machine = Machine.find(params[:id])
   end
 
   # POST /machines
@@ -40,6 +40,8 @@ class MachinesController < ApplicationController
   # PATCH/PUT /machines/1
   # PATCH/PUT /machines/1.json
   def update
+    @machine = Machine.find(params[:id])
+
     respond_to do |format|
       if @machine.update(machine_params)
         format.html { redirect_to @machine, notice: 'Machine was successfully updated.' }
@@ -54,6 +56,7 @@ class MachinesController < ApplicationController
   # DELETE /machines/1
   # DELETE /machines/1.json
   def destroy
+    @machine = Machine.find(params[:id])
     @machine.destroy
     respond_to do |format|
       format.html { redirect_to machines_url, notice: 'Machine was successfully destroyed.' }
@@ -62,18 +65,14 @@ class MachinesController < ApplicationController
   end
 
   def turn
+    @machine = Machine.find(params[:id])
     @machine.turn!
     redirect_to @machine
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_machine
-      @machine = Machine.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def machine_params
-      params.require(:machine).permit(:name, :positions, :current_position)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def machine_params
+    params.require(:machine).permit(:name, :positions, :current_position)
+  end
 end

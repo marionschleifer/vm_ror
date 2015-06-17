@@ -3,10 +3,7 @@ require 'test_helper'
 class MachineTest < ActiveSupport::TestCase
 
   setup do
-    @machine = Machine.new
-    @machine.name = "My machine"
-    @machine.positions = 3
-    @machine.current_position = 1
+    @machine = machines(:icecream_machine)
   end
 
   test "turn" do
@@ -16,7 +13,7 @@ class MachineTest < ActiveSupport::TestCase
   end
 
   test "turn back to first position" do
-    3.times do
+    @machine.positions.times do
       @machine.turn!
     end
     assert 1, @machine.current_position

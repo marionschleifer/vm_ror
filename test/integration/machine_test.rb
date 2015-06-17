@@ -20,9 +20,9 @@ class AuthenticationTest < ActionDispatch::IntegrationTest
   test "machine turn" do
     visit machine_path(@machine)
     assert page.has_content?("3.50")
-    # click_link("TURN")
-    # click_link("TURN")
-    # assert page.has_content?("3.80")
+    click_link("TURN")
+    click_link("TURN")
+    assert page.has_content?("0.90")
   end
 
   test "create article" do
@@ -33,7 +33,9 @@ class AuthenticationTest < ActionDispatch::IntegrationTest
     select '2017', :from => 'article[expiry_date(1i)]'
     select 'August', :from => 'article[expiry_date(2i)]'
     select '1', :from => 'article[expiry_date(3i)]'
-    #click_button('Create Article')
+    click_button('Create Article')
+    visit machine_path(@machine)
+    assert find('table.machine-table').has_content?('Strawberry')
   end
 
 end
