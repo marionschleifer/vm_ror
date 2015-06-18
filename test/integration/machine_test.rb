@@ -33,9 +33,16 @@ class AuthenticationTest < ActionDispatch::IntegrationTest
     select '2017', :from => 'article[expiry_date(1i)]'
     select 'August', :from => 'article[expiry_date(2i)]'
     select '1', :from => 'article[expiry_date(3i)]'
-    click_button('Create Article')
+    click_button('Speichern')
     visit machine_path(@machine)
-    assert find('table.machine-table').has_content?('Strawberry')
+    assert page.has_content?('Strawberry')
+  end
+
+  test "purchase ice cream" do
+    visit machine_path(@machine)
+    click_link('Purchase', match: :first)
+    visit machine_path(@machine)
+    assert page.has_no_content?("Purchase")
   end
 
 end

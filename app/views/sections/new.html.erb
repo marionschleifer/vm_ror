@@ -1,5 +1,25 @@
-<h1>New Section</h1>
+<%= form_for(@section) do |f| %>
+  <% if @section.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@section.errors.count, "error") %> prohibited this section from being saved:</h2>
 
-<%= render 'form' %>
+      <ul>
+      <% @section.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= link_to 'Back', sections_path %>
+  <div class="field">
+    <%= f.label :empty %><br>
+    <%= f.check_box :empty %>
+  </div>
+  <div class="field">
+    <%= f.label :turn_table_id %><br>
+    <%= f.number_field :turn_table_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

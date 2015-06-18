@@ -7,16 +7,16 @@ class MachineTest < ActiveSupport::TestCase
   end
 
   test "turn" do
-    assert 1, @machine.current_position
+    assert_equal 1, @machine.current_position
     @machine.turn!
-    assert 2, @machine.current_position
+    assert_equal 2, @machine.current_position
   end
 
   test "turn back to first position" do
     @machine.positions.times do
       @machine.turn!
     end
-    assert 1, @machine.current_position
+    assert_equal 1, @machine.current_position
   end
 
 end

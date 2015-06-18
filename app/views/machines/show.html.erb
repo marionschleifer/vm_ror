@@ -1,10 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p class='title'>
+<h2>
   <%= @machine.name  %>
-</p>
+</h2>
 
-<table class="machine-table">
+<table class="table table-bordered">
   <td>
     <table>
       <% @machine.turn_tables.each do |turn_table| %>
@@ -12,9 +12,16 @@
           <% turn_table.sections.each_with_index do |section, index| %>
             <% css_class = 'active' if @machine.current_position == index + 1 %>
             <% if section.empty? %>
-              <td class="section-table <%= css_class %>"><%= link_to '+', new_article_path(section_id: section.id) %></td>
+              <td class="section-table <%= css_class %>"><%= link_to '+', new_machine_article_path(@machine, section_id: section.id) %></td>
             <% else %>
-              <td class="section-table <%= css_class %>"><%= section.article.name %></td>
+              <td class="col-xs-1 text-center section-table <%= css_class %>">
+              <% if section.article.expired? %>
+                <p class='expired'> <%= section.article.name %> </p>
+              <% else %>
+                <p> <%= section.article.name %>
+                </p>
+              <% end %>
+              </td>
             <% end %>
           <% end %>
           <td class="price">
@@ -27,9 +34,12 @@
           <% if turn_table.sections[(@machine.current_position-1)].empty? %>
             <td class="section-table">
           <% elsif turn_table.sections[(@machine.current_position-1)].article.expired? %>
-            <td class="expired">
+            <td class="expired-active">
           <% else %>
             <td class="fine">
+              <div>
+                <%= link_to 'Purchase', machine_article_path(@machine, turn_table.sections[(@machine.current_position-1)].article), :method => :delete %>
+              </div>
           <% end %>
           </td>
         </tr>
@@ -46,8 +56,7 @@
 </table>
 
 <p>
-  <%= link_to 'Create turntable', turn_tables_path(turn_table: {machine_id: @machine.id}), :method => :post %>
+  <%= link_to 'Create turntable', machine_turn_tables_path(@machine, turn_table: {machine_id: @machine.id}), :method => :post, class: 'btn btn-info' %>
+  <%= link_to 'Maschine konfigurieren', edit_machine_path(@machine), class: 'btn btn-default' %>
 </p>
 
-<%= link_to 'Edit', edit_machine_path(@machine) %> |
-<%= link_to 'Back', machines_path %>

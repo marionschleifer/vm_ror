@@ -1,8 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Machines</h1>
-
-<table>
+<table class='table'>
   <thead>
     <tr>
       <th>Name</th>
@@ -15,10 +13,9 @@
   <tbody>
     <% @machines.each do |machine| %>
       <tr>
-        <td><%= machine.name %></td>
+        <td><%= link_to machine.name, machine %></td>
         <td><%= machine.positions %></td>
         <td><%= machine.current_position %></td>
-        <td><%= link_to 'Show', machine %></td>
         <td><%= link_to 'Edit', edit_machine_path(machine) %></td>
         <td><%= link_to 'Destroy', machine, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
