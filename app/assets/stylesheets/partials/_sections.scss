@@ -8,12 +8,12 @@
 }
 
 .section-table {
-  border: 1px solid brown;
+  border: 1px solid lightgrey;
   padding: 10px;
 }
 
 .price {
-  border: 2px solid brown;
+  border: 2px solid lightblue;
   padding: 10px;
   font-weight: bold;
 }
@@ -21,7 +21,7 @@
 .turn {
   background-color: lightblue;
   padding: 10px;
-  border: 2px solid brown;
+  border: 2px solid blue;
   font-weight: bold;
 }
 
@@ -29,14 +29,10 @@
   background-color: lightblue;
 }
 
-.expired-active {
-  background-color: red;
-}
-
-.fine {
-  background-color: green;
-}
-
 .expired {
   color: red;
+}
+
+.purchase {
+  border: 2px solid lightblue;
 }

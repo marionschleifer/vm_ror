@@ -15,6 +15,10 @@ class MachinesController < ApplicationController
     @machine = Machine.find(params[:id])
   end
 
+  def service
+    @machine = Machine.find(params[:id])
+  end
+
   def create
     @machine = Machine.new(machine_params)
 

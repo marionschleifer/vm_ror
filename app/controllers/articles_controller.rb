@@ -18,7 +18,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article = Article.find(params[:id])
-    @article.destroy
+    @article.purchase!
     redirect_to @machine, notice: 'Article was successfully destroyed.'
   end
 

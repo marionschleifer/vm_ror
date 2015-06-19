@@ -6,7 +6,13 @@ Rails.application.routes.draw do
     member do
       put :turn
     end
+
+    member do
+      get :service
+    end
   end
+
+  resources :activities, only: [:index]
 
   root 'machines#index'
 

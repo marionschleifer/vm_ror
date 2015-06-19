@@ -4,7 +4,7 @@
   <%= @machine.name  %>
 </h2>
 
-<table class="table table-bordered">
+<table class="table table-striped">
   <td>
     <table>
       <% @machine.turn_tables.each do |turn_table| %>
@@ -12,11 +12,10 @@
           <% turn_table.sections.each_with_index do |section, index| %>
             <% css_class = 'active' if @machine.current_position == index + 1 %>
             <% if section.empty? %>
-              <td class="section-table <%= css_class %>"><%= link_to '+', new_machine_article_path(@machine, section_id: section.id) %></td>
+              <td class="section-table <%= css_class %>" %></td>
             <% else %>
               <td class="col-xs-1 text-center section-table <%= css_class %>">
               <% if section.article.expired? %>
-                <p class='expired'> <%= section.article.name %> </p>
               <% else %>
                 <p> <%= section.article.name %>
                 </p>
@@ -32,11 +31,11 @@
             <% end %>
           </td>
           <% if turn_table.sections[(@machine.current_position-1)].empty? %>
-            <td class="section-table">
+            <td class="purchase">
           <% elsif turn_table.sections[(@machine.current_position-1)].article.expired? %>
-            <td class="expired-active">
+            <td class="purchase">
           <% else %>
-            <td class="fine">
+            <td class="purchase">
               <div>
                 <%= link_to 'Purchase', machine_article_path(@machine, turn_table.sections[(@machine.current_position-1)].article), :method => :delete %>
               </div>
@@ -54,9 +53,3 @@
     </table>
   </td>
 </table>
-
-<p>
-  <%= link_to 'Create turntable', machine_turn_tables_path(@machine, turn_table: {machine_id: @machine.id}), :method => :post, class: 'btn btn-info' %>
-  <%= link_to 'Maschine konfigurieren', edit_machine_path(@machine), class: 'btn btn-default' %>
-</p>
-
