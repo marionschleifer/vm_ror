@@ -19,7 +19,13 @@ class ArticlesController < ApplicationController
   def destroy
     @article = Article.find(params[:id])
     @article.purchase!
-    redirect_to @machine, notice: 'Article was successfully destroyed.'
+    redirect_to @machine, notice: 'Article was successfully purchased.'
+  end
+
+  def remove
+    @article = Article.find(params[:id])
+    @article.destroy
+    redirect_to service_machine_path(@machine), notice: 'Article was successfully removed.'
   end
 
   private

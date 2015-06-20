@@ -4,8 +4,3 @@ icecream_machine:
   name: Best Icecream in Town
   positions: 3
   current_position: 1
-
-cigarette_machine:
-  name: Cigarette Machine
-  positions: 3
-  current_position: 1

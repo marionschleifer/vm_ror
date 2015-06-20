@@ -25,8 +25,9 @@ class AuthenticationTest < ActionDispatch::IntegrationTest
     assert page.has_content?("0.90")
   end
 
-  test "create article" do
+  test "create article in service mode" do
     visit machine_path(@machine)
+    click_link('Service')
     click_link('+', match: :first)
     fill_in('Name', :with => 'Strawberry')
     fill_in('Price', :with => '400')
@@ -38,11 +39,25 @@ class AuthenticationTest < ActionDispatch::IntegrationTest
     assert page.has_content?('Strawberry')
   end
 
-  test "purchase ice cream" do
+  test "remove article in service mode" do
+    visit machine_path(@machine)
+    click_link('Service')
+    click_link('Solero')
+    assert page.has_no_content?("Solero")
+  end
+
+  test "purchase article" do
     visit machine_path(@machine)
     click_link('Purchase', match: :first)
     visit machine_path(@machine)
     assert page.has_no_content?("Purchase")
+  end
+
+  test "add purchased article to activities" do
+    visit machine_path(@machine)
+    click_link('Purchase', match: :first)
+    click_link('Activities')
+    assert page.has_content?("Solero")
   end
 
 end

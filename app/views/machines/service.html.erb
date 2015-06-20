@@ -15,9 +15,9 @@
             <% else %>
               <td class="section-table">
               <% if section.article.expired? %>
-                <p class='expired'> <%= link_to "#{section.article.name}" %> </p>
+                <p class='expired'> <%= link_to "#{section.article.name}", remove_machine_article_path(Machine.first, section.article.id), :method => :delete %> </p>
               <% else %>
-                <p> <%= link_to "#{section.article.name}" %> </p>
+                <p> <%= link_to "#{section.article.name}", remove_machine_article_path(Machine.first, section.article.id), :method => :delete %> </p>
               <% end %>
               </td>
             <% end %>
