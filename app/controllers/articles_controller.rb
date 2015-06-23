@@ -10,7 +10,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
 
     if @article.save
-      redirect_to @machine, notice: 'Article was successfully created.'
+      redirect_to service_machine_path(@machine), notice: 'Article was successfully created.'
     else
       render :new
     end

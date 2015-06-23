@@ -29,6 +29,6 @@
 </table>
 
 <p>
-  <%= link_to 'Create turntable', machine_turn_tables_path(@machine, turn_table: {machine_id: @machine.id}), :method => :post, class: 'btn btn-info' %>
+  <%= link_to 'Create turntable', machine_turn_tables_path(@machine, turn_table: { machine_id: @machine.id }), :method => :post, class: 'btn btn-info' %>
   <%= link_to 'Configure machine', edit_machine_path(@machine), class: 'btn btn-default' %>
 </p>

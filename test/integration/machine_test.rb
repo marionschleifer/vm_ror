@@ -39,6 +39,14 @@ class AuthenticationTest < ActionDispatch::IntegrationTest
     assert page.has_content?('Strawberry')
   end
 
+  test "change to service mode and back" do
+    visit machine_path(@machine)
+    click_link('Service')
+    assert page.has_content?('Create turntable')
+    click_link('Customer')
+    assert page.has_content?('TURN')
+  end
+
   test "remove article in service mode" do
     visit machine_path(@machine)
     click_link('Service')

@@ -13,11 +13,9 @@ class TurnTablesController < ApplicationController
         @machine.positions.times do
           @turn_table.sections.create
         end
-        format.html { redirect_to @machine, notice: 'Turn table was successfully created.' }
-        format.json { render :show, status: :created, location: @turn_table }
+        format.html { redirect_to service_machine_path(@machine), notice: 'Turn table was successfully created.' }
       else
         format.html { render :new }
-        format.json { render json: @turn_table.errors, status: :unprocessable_entity }
       end
     end
   end
