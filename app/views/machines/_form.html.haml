@@ -1,0 +1,24 @@
+= form_for(@machine) do |f|
+  - if @machine.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@machine.errors.count, "error")
+        prohibited this machine from being saved:
+
+      %ul
+        - @machine.errors.full_messages.each do |message|
+          %li= message
+
+  .field.form-group
+    = f.label :name
+    %br
+    = f.text_field :name, class: 'form-control'
+  .field
+    = f.label :positions
+    %br
+    = f.number_field :positions
+  .field
+    = f.label :current_position
+    %br
+    = f.number_field :current_position
+  .actions= f.submit

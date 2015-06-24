@@ -51,21 +51,21 @@ class AuthenticationTest < ActionDispatch::IntegrationTest
     visit machine_path(@machine)
     click_link('Service')
     click_link('Solero')
-    assert page.has_no_content?("Solero")
+    assert page.has_no_content?('Solero')
   end
 
   test "purchase article" do
     visit machine_path(@machine)
     click_link('Purchase', match: :first)
     visit machine_path(@machine)
-    assert page.has_no_content?("Purchase")
+    assert page.has_no_content?('Purchase')
   end
 
   test "add purchased article to activities" do
     visit machine_path(@machine)
     click_link('Purchase', match: :first)
     click_link('Activities')
-    assert page.has_content?("Solero")
+    assert page.has_content?('Solero')
   end
 
 end

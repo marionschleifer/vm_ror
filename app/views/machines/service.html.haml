@@ -1,0 +1,20 @@
+%p#notice= notice
+
+%h2= @machine.name
+
+%table.table.table-striped
+  - @machine.turn_tables.each do |turn_table|
+    %tr
+      - turn_table.sections.each_with_index do |section, index|
+        - if section.empty?
+          %td.section-table= link_to '+', new_machine_article_path(@machine, section_id: section.id)
+        - else
+          %td.section-table
+            - if section.article.expired?
+              %p.expired= link_to "#{section.article.name}", remove_machine_article_path(Machine.first, section.article.id), :method => :delete
+            - else
+              %p= link_to "#{section.article.name}", remove_machine_article_path(Machine.first, section.article.id), :method => :delete
+
+%p
+  = link_to 'Create turntable', machine_turn_tables_path(@machine, turn_table: { machine_id: @machine.id }), :method => :post, class: 'btn btn-info'
+  = link_to 'Configure machine', edit_machine_path(@machine), class: 'btn btn-default'

@@ -1,0 +1,14 @@
+%h3 Sold Articles
+
+%table.table.table-striped
+  - @articles.each do |article|
+    %tr
+      %td= article.name
+      %td= l(article.updated_at, format: :long)
+
+%h4 Total Value of Sold Articles
+
+- total_value = 0
+- @articles.each do |article|
+  - total_value += article.price
+= number_with_precision(total_value/100.0, precision: 2)

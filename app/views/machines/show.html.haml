@@ -1,0 +1,32 @@
+%p#notice= notice
+
+%h2= @machine.name
+
+%table.table.table-striped
+  %td
+    %table
+      - @machine.turn_tables.each do |turn_table|
+        %tr
+          - turn_table.sections.each_with_index do |section, index|
+            - css_class = 'active' if @machine.current_position == index + 1
+            - if section.empty?
+              %td.section-table{class: css_class}
+            - else
+              %td.col-xs-1.text-center.section-table{class: css_class}
+                %p= section.article.name unless section.article.expired?
+          %td.price
+            - if turn_table.sections[(@machine.current_position-1)].empty?
+              n/a
+            - else
+              = number_with_precision(turn_table.sections[(@machine.current_position-1)].article.price/100.0, precision: 2)
+          - if turn_table.sections[(@machine.current_position-1)].empty?
+            %td.purchase
+          - elsif turn_table.sections[(@machine.current_position-1)].article.expired?
+            %td.purchase
+          - else
+            %td.purchase
+              = link_to 'Purchase', machine_article_path(@machine, turn_table.sections[(@machine.current_position-1)].article), :method => :delete
+  %td
+    %table
+      %td.turn
+        = link_to "TURN", turn_machine_path(@machine), :method => :put
