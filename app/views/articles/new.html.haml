@@ -1,0 +1,26 @@
+%h1 New Article
+= form_for([@machine, @article]) do |f|
+  - if @article.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@article.errors.count, "error")
+        prohibited this article from being saved:
+      %ul
+        - @article.errors.full_messages.each do |message|
+          %li= message
+  .form-group
+    = f.label :name
+    %br/
+    = f.text_field :name, class: 'form-control'
+  .form-group
+    = f.label :price
+    %br/
+    = f.number_field :price
+  .form-group
+    = f.label :expiry_date
+    %br/
+    = f.date_select :expiry_date
+  .form-group
+    = f.hidden_field :section_id
+    = f.submit 'Speichern', class: 'btn btn-primary'
+    = link_to 'Abbrechen', machine_articles_path(@machine), class: 'btn btn-default'

@@ -1,0 +1,18 @@
+%p#notice= notice
+%table.table
+  %thead
+    %tr
+      %th Name
+      %th Positions
+      %th Current position
+      %th{:colspan => "3"}
+  %tbody
+    - @machines.each do |machine|
+      %tr
+        %td= link_to machine.name, machine
+        %td= machine.positions
+        %td= machine.current_position
+        %td= link_to 'Edit', edit_machine_path(machine)
+        %td= link_to 'Destroy', machine, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Machine', new_machine_path

@@ -1,0 +1,19 @@
+= form_for(@turn_table) do |f|
+  - if @turn_table.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@turn_table.errors.count, "error")
+        prohibited this turn_table from being saved:
+      %ul
+        - @turn_table.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :open
+    %br/
+    = f.check_box :open
+  .field
+    = f.label :machine_id
+    %br/
+    = f.number_field :machine_id
+  .actions
+    = f.submit
